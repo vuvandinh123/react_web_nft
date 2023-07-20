@@ -1,0 +1,5 @@
+export {default as Brand } from "./Brand"
+export {default as Content } from "./Content"
+export {default as Collections } from "./Collections"
+export {default as Trending } from "./Trending"
+export {default as CategoryHome } from "./CategoryHome"

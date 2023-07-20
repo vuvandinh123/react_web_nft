@@ -3,6 +3,7 @@ import heart1 from "../../../public/Heart.svg"
 import heart2 from "../../../public/Heart2.svg"
 import { useState } from "react"
 import { PropTypes } from "prop-types"
+import ImageLoader from "./ImageLoader"
 const StyledProduct = styled.div`
   position: relative;
   background-color: var(--card);
@@ -36,6 +37,10 @@ const StyledProduct = styled.div`
   overflow: hidden;
   border-radius: 10px;
   transition: 0.3s;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   max-height: 400px;
   img {
     width: 100%;
@@ -139,7 +144,7 @@ const Card = (props) => {
         <img className="" src={heart ? heart1 : heart2} alt="" />
       </div>
       <div className="card__image">
-        <img src={`./src/assets/images/products/${image}`} alt="" />
+        <ImageLoader src={image} alt={name} />
       </div>
       <div className="card__content">
         <div className="card__title">{name}</div>
@@ -169,7 +174,7 @@ const Card = (props) => {
 }
 Card.propTypes = {
   name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,

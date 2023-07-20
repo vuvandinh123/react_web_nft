@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import './Header.scss';
 import Search from './Search';
 import SearchMobie from './SearchMobie';
+import { Brand } from '../Home';
 const Header = () => {
     const [bars, setBars] = React.useState(false);
     const [search, setSearch] = React.useState(false);
@@ -12,6 +13,7 @@ const Header = () => {
         if(localStorage.getItem('darkmod')) {
             document.body.classList.add('darkmod');
             setDarkmod(true);
+            <Brand />
         }
         else{
             document.body.classList.remove('darkmod');

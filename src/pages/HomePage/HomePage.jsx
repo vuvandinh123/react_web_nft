@@ -1,7 +1,5 @@
-import Brand from "../../components/Home/Brand"
-import Collections from "../../components/Home/Collections"
-import Content from "../../components/Home/Content"
-import Trending from "../../components/Home/Trending"
+import Brand from "@/components/Home/Brand"
+import { CategoryHome, Collections, Content, Trending } from "../../components/Home"
 
 const HomePage = () => {
     return (
@@ -12,6 +10,7 @@ const HomePage = () => {
                 <div className="container" >
                     <Trending />
                     <Collections/>
+                    <CategoryHome />
                 </div>
             </section>
             

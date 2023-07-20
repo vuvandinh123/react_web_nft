@@ -1,4 +1,5 @@
 @import '../../scss/Mixin.scss';
+
 header {
     color: var(--color-text);
     height: 180px;
@@ -253,7 +254,8 @@ header {
     .header__login--mb {
         display: none;
     }
-// mobie
+
+    // mobie
     @include media(987px) {
         .header__navigation {
             top: 0;
@@ -267,6 +269,7 @@ header {
             visibility: hidden;
             opacity: 0;
             transition: 0.4s;
+
             .header__close {
                 position: absolute;
                 right: 10px;
@@ -412,6 +415,7 @@ header {
                             left: 40px;
                             padding: 0 5px;
                             z-index: 3;
+
                             i {
                                 font-size: 1.5rem;
                                 color: #ccc;
@@ -460,7 +464,7 @@ header {
                         padding-top: 30px;
                         overflow: hidden;
                         right: 0;
-                        max-height: 100vh !important; 
+                        max-height: 100vh !important;
                         left: 0;
                         color: var(--color-text);
                         border-radius: 0 0 5px 5px;
@@ -553,6 +557,7 @@ header {
     margin-top: 5px;
     width: 40px;
     height: 40px;
+
     i {
         cursor: pointer;
         padding: 10px;

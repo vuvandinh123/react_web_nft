@@ -64,7 +64,6 @@ const Placehoder = () => {
         <StyledPlacehoder>
             <div className="placehoder">
                 <div className="placehoder__image">
-
                 </div>
                 <div className="placehoder__content">
                     <div className="placehoder__item"></div>

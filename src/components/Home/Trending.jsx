@@ -1,8 +1,8 @@
 import { styled } from "styled-components"
 import card from "../../assets/images/products/card1.png";
 import Button from "../Gloabal/Button";
-import useCountDown from "../../hooks/useCountDown";
 import Blur from "../Gloabal/Blur";
+import { useCountDown, useScrollTop } from "../../hooks";
 const StyledTrending = styled.div`
     margin: 20px 0;
   display: grid;
@@ -71,6 +71,7 @@ const StyledTrending = styled.div`
 const Trending = () => {
 
   const timeCountDown = new Date("2023-10-28T12:00:00").getTime();
+  useScrollTop
   const { coundownRef } = useCountDown({ timeCountDown });
   return (
     <>
