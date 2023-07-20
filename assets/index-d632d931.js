@@ -427,4 +427,4 @@ Error generating stack: `+i.message+`
   @media screen and (max-width: 900px) {
     grid-template-columns: auto;
   }
-`;function v0(){return g.jsx(g.Fragment,{children:g.jsx(pm,{})})}Qi.createRoot(document.getElementById("root")).render(g.jsx(We.StrictMode,{children:g.jsx(om,{scrollRestoration:"auto",children:g.jsx(v0,{})})}));
+`;function v0(){return g.jsxs(g.Fragment,{children:[g.jsx(pm,{}),g.jsx("h1",{children:"hello"})]})}Qi.createRoot(document.getElementById("root")).render(g.jsx(We.StrictMode,{children:g.jsx(om,{scrollRestoration:"auto",children:g.jsx(v0,{})})}));
