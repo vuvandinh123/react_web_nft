@@ -1,6 +1,7 @@
 {
   "name": "nft-react-vite",
   "private": true,
+  "homepage": "https://vuvandinh123.github.io/vvd-nft",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
