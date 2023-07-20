@@ -1,0 +1,42 @@
+:root {
+    --border: 1px solid rgb(0, 0, 0, 0.14);
+    --color-text: #131528;
+    --card: #ffe2e2da;
+    --sticky: #fff;
+    --mb: #fff;
+}
+
+body {
+    font-weight: 400;
+    font-size: 1.6rem;
+    font-family: "Space Grotesk", sans-serif;
+    line-height: 1;
+    background-color: #ffffff;
+    position: relative;
+    scroll-behavior: smooth;
+    height: max-content;
+}
+
+body.darkmod {
+    background-color: #020005;
+    --color-text: #fff;
+    $primary: #1e50ff;
+    $gray: gray;
+    $dark: #131528;
+    --border: 1px solid rgb(251 251 251 / 20%);
+    --card: #131528;
+    --sticky: #131528;
+    --mb: #363030;
+}
+
+.color-red {
+    color: rgb(255, 149, 0);
+}
+
+.container {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}

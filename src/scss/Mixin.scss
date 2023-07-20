@@ -1,0 +1,73 @@
+@mixin flex-center($value: "center") {
+    @if ($value=="center") {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @if ($value=="between") {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@mixin media($maxWith: 768px) {
+    @media screen and (max-width: $maxWith) {
+        @content;
+    }
+}
+
+@mixin btn($color: #1e50ff, $w: 200px, $h: 40px) {
+    color: #fff;
+    width: $w;
+    height: $h;
+    background-color: $color;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        left: 0;
+        top: 0;
+        width: 0px;
+        transform: rotate(10deg);
+        height: 100%;
+        position: absolute;
+        background-color: #ffffffb9;
+        display: block;
+        z-index: 99;
+        transition: 0.4s;
+    }
+
+    &:hover::before {
+        width: 50px;
+        left: 110%;
+    }
+}
+
+@mixin buttom() {
+    &::before {
+        content: "";
+        left: 0;
+        top: 0;
+        width: 0px;
+        transform: rotate(10deg);
+        height: 100%;
+        position: absolute;
+        background-color: #ffffffb9;
+        display: block;
+        z-index: 99;
+        transition: 0.4s;
+    }
+
+    &:hover::before {
+        width: 50px;
+        left: 110%;
+    }
+}
+
+$primary: #1e50ff;
+$gray: gray;
+$dark: #131528;
