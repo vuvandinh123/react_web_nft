@@ -1,5 +1,5 @@
 import './App.scss'
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import Layout from './layout/layout'
 import HomePage from './pages/HomePage/HomePage';
 import CardList from './components/Gloabal/CardList';
