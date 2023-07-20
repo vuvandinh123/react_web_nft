@@ -1,19 +1,18 @@
 import './App.scss'
-import { Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import Layout from './layout/layout'
 import HomePage from './pages/HomePage/HomePage';
-import Header from './components/Header/Header';
 function App() {
 
   return (
     <>
-      {/* <Routes>
-        <Route path='/' element={<Layout/>}>
-          <Route index element={<HomePage/>}></Route>
+       <HashRouter>
+      <Switch>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
         </Route>
-      </Routes> */}
-      <Header/>
-      <h1>hello</h1>
+      </Switch>
+    </HashRouter>
     </>
   )
 }
