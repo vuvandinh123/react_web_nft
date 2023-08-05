@@ -1,0 +1,93 @@
+// base styleing
+// 
+// import font
+
+@import url("https://fonts.googleapis.com/css2?family=Itim&family=Pacifico&family=Paytone+One&family=Poppins:wght@200;300;400;500;600;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+// css reset
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+select,
+textarea {
+    background-color: transparent;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+
+    --border: 1px solid rgb(0, 0, 0, 0.14);
+    --nav-bg: #ffff;
+    --card-bg: #ffe2e2da;
+    --text-color: #131528;
+    --card-text: #ffff;
+    --bg-sticky-mb: #fff;
+    --bg-model: #ffe2e2;
+    --bg-hover:rgb(245, 245, 245);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow-x: hidden;
+    height: max-content;
+    min-height: 100vh;
+    font-weight: 400;
+    font-size: $baseSize;
+    font-family: "Space Grotesk";
+    line-height: 1;
+    background-color: var(--body-bg-light);
+    transition: height 0.3s ease;
+}
+
+body.darkmode {
+    --border: 1px solid rgb(251 251 251 / 20%);
+    --card-text: #131528;
+    --bg-sticky-mb: #131528;
+    --nav-bg: #131528;
+    --bg-model: #131528;
+    --bg-hover:rgb(43, 49, 57);
+    --card-bg: #131528;
+    --text-color: #ffff;
+    background-color: var(--body-bg-dark);
+}
+::-webkit-scrollbar {
+    width: 1px;
+    background-color: #131528;
+} 
+::-webkit-scrollbar-thumb {
+    background-color: #131528;
+}

@@ -1,182 +1,57 @@
-import { styled } from "styled-components"
 import heart1 from "../../../public/Heart.svg"
 import heart2 from "../../../public/Heart2.svg"
 import { useState } from "react"
 import { PropTypes } from "prop-types"
 import ImageLoader from "./ImageLoader"
-const StyledProduct = styled.div`
-  position: relative;
-  background-color: var(--card);
-  padding: 20px;
-  color: #fff;
-  border-radius: 10px;
-  max-height: 582px;
-  cursor: pointer;
-  .card__heart {
-    position: absolute;
-    right: 30px;
-    top: 30px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-      img {
-        width: 50%;
-        transition: 0.3s;
-      }
-      &:hover img {
-        transform: scale(1.2);
-      }
-    }
-.card__image {
-  margin-bottom: 20px;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 10px;
-  transition: 0.3s;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-height: 400px;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-.card__content {
-  .card__title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--color-text);
-    margin: 15px 0;
-  }
-  .card__outher {
-    color: gray;
-    font-size: 1.5rem;
-    margin: 15px 0;
-    span {
-      color: #1e50ff;
-      cursor: pointer;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-  .card__bottom {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    .card__price {
-      color: gray;
-      h4 {
-        margin: 5px 0;
-        color: var(--color-text);
-      }
-    }
-    .card__time {
-      color: gray;
-      h5 {
-        text-align: center;
-        margin: 5px 0;
-        color: var(--color-text);
-      }
-    }
-  }
-}
-  .card__btn {
-    opacity: 0;
-    visibility: hidden;
-    margin-top: 20px;
-    transition: 0.4s;
-    left: 0;
-    right: 0;
-    a {
-      display: block;
-      width: 100%;
-      height: 40px;
-      border-radius: 10px;
-      background-color: #1e61fd;
-      color: #fff;
-      line-height: 40px;
-      text-align: center;
-      transition: 0.2s;
-      position: relative;
-      overflow: hidden;
-      &::before {
-    content: "";
-    left: 0;
-    top: 0;
-    width: 0px;
-    transform: rotate(10deg);
-    height: 100%;
-    position: absolute;
-    background-color: #ffffffb9;
-    display: block;
-    z-index: 99;
-    transition: 0.4s;
-  }
-  &:hover::before {
-    width: 50px;
-    left: 110%;
-  }
-  }
-}
-  &:hover .card__image {
-    height: 340px;
-  }
-  &:hover .card__btn {
-    opacity: 1;
-    position: static;
-    visibility: initial;
-  }
-`
+import { useCountDown } from "../../hooks"
+import { Link } from "react-router-dom"
+
 const Card = (props) => {
   const [heart,setHeart] = useState(false);
-  const {name,price,author,image} = props;
+  const {name,price,author,image,id,col} = props;
+  const timeCountDown = new Date(`2023-08-23T12:00:00`).getTime();
+  const { time } = useCountDown("hours",timeCountDown );
   return (
-    <StyledProduct>
-      <div onClick={()=>setHeart(!heart)} className="card__heart">
+    <div className="card" style={{'--col':col}}>
+      <div onClick={()=>setHeart(!heart)} className="card__heart d-center">
         <img className="" src={heart ? heart1 : heart2} alt="" />
       </div>
-      <div className="card__image">
-        <ImageLoader src={image} alt={name} />
+      <div className="card__image d-center relative">
+        <Link to={`/item/${id}`}><ImageLoader src={image} alt={name} /></Link>
       </div>
       <div className="card__content">
-        <div className="card__title">{name}</div>
+        <div className="card__title"><h3>{name}</h3></div>
         <div className="card__outher">
-          Created by <span>{author}</span>
+          Created by <Link to={''}>{author}</Link>
         </div>
         <div className="card__bottom">
           <div className="card__price">
-            <p>Current Bid</p>
-            <h4>{price} ETH</h4>
+            <p className="text-gray">Current Bid</p>
+            <h4 className="">{price} ETH</h4>
           </div>
           <div className="card__time">
-            <p>Remaining Time</p>
+            <p className="text-gray">Remaining Time</p>
             <h5>
-              <span className="card-hours"> 12</span> :
-              <span className="card-min">03</span> :
-              <span className="card-sec">12</span>
+              <span className="card-hours"> {time.hours}</span> :
+              <span className="card-min">{time.minutes}</span> :
+              <span className="card-sec">{time.seconds}</span>
             </h5>
           </div>
         </div>
       </div>
       <div className="card__btn">
-        <a href="#">Collect Now</a>
+        <Link to={`item/${id}`}>Collect Now</Link>
       </div>
-    </StyledProduct>
+    </div>
   )
 }
 Card.propTypes = {
+  id:PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  col:PropTypes.number
 }
 export default Card

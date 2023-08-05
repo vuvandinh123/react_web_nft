@@ -1,80 +1,118 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react'
-import avata1 from '../../assets/images/user/avata1.png';
 import avata2 from '../../assets/images/user/avata2.png';
-import avata3 from '../../assets/images/user/avata3.jpg';
-import avata4 from '../../assets/images/user/avata4.png';
-import avata5 from '../../assets/images/user/avata5.jpg';
-import avata6 from '../../assets/images/user/avata6.jpg';
-import avata7 from '../../assets/images/user/avata7.png';
 import tich from '../../assets/images/user/tich.png';
+import fire from '../../../public/lua.png';
+import { useTranslation } from 'react-i18next';
+import { useSearch } from '../../hooks';
 const Search = () => {
+  const { t } = useTranslation()
+  const {handleSubmitSearch,handleChangeSearch,searchInputRef,value,products,user} = useSearch();
   return (
-    <div className="header__search">
-      <form action="" method="post">
-        <button><i className="fa-solid fa-magnifying-glass" /></button>
-        <input id="s" autoComplete="off" type="text" defaultValue="" required placeholder="Search collection, item or user" />
-        <label htmlFor="s" className="place">Search collection, item or user</label>
+    <div className="header__search ">
+      <form action="" onSubmit={handleSubmitSearch} className='mt-1' method="post">
+        <button className='' type='submit' ><i style={{ marginTop: "12px" }} className="fa-solid fa-magnifying-glass" /></button>
+        <input id="s" ref={searchInputRef} onChange={handleChangeSearch} autoComplete="off" type="text" defaultValue="" required placeholder="Search collection, item or user" />
+        <label htmlFor="s" className="place mt-1">{t('search_placeholder')}</label>
         <div className="header__search--collections">
-          <p>Recommended Collections</p>
-          <ul className='header__collections'>
-            <li>
-              <div className="header__avatar">
-                <img src={avata2} alt="" />
+          {
+            value != '' ?
+              <>
+                <div>
+                  {
+                    products.length > 0 ?
+                      <>
+                        <p style={{ padding: "10px 0px" }}>Collections </p>
+                        <ul className='header__collections'>
+                          {
+                            products.map((item, index) => {
+                              if (index < 8) {
+                                return (
+                                  <li key={item.id}>
+                                    <div className="header__avatar">
+                                      <img src={item.image} alt="" />
+                                    </div>
+                                    <div className="header__name">
+                                      <span>{item.name}</span>
+                                    </div>
+                                  </li>
+                                )
+                              }
+                            })
+                          }
+                        </ul>
+                      </>
+                      :
+                      <div></div>
+                  }
+                </div>
+                <div>
+                  {
+                    user.length > 0 ?
+                      <>
+                        <p style={{ padding: "10px 0px" }}>User </p>
+                        <ul className='header__collections'>
+                          {
+                            user.map((item, index) => {
+                              if (index < 8) {
+                                return (
+                                  <li key={item.id} className='d-between'>
+                                    <div className='d-flex' style={{ gap: "10px", alignItems: "center" }}>
+                                      <div className="header__avatar">
+                                        <img src={avata2} alt="" />
+                                      </div>
+                                      <div className="header__name">
+                                        <span>{item.name}</span>
+                                      </div>
+                                      {item.rose === 1 ? <img src={tich} alt="" /> : ""}
+                                    </div>
+                                    <div className='' style={{ fontSize: "1.4rem" }}>{item.followers} Followers</div>
+                                  </li>
+                                )
+                              }
+                            })
+                          }
+
+
+                        </ul>
+                      </>
+                      :
+                      <div></div>
+                  }
+
+                </div>
+              </>
+              :
+              <div>
+                {
+                  products.length > 0 ?
+                    <>
+                      <p style={{ padding: "10px 0px" }}>Recommended Collections  <img style={{ width: "10px" }} className='d-inline' src={fire} alt="" /></p>
+                      <ul className='header__collections'>
+                        {
+                          products.map((item, index) => {
+                            if (index < 16) {
+                              return (
+                                <li key={item.id} className='d-between'>
+                                  <div className='d-flex' style={{ gap: "10px", alignItems: "center" }}>
+                                    <div className="header__avatar">
+                                      <img src={item.image} alt="" />
+                                    </div>
+                                    <div className="header__name">
+                                      <span>{item.name}</span>
+                                    </div>
+                                    {item.rose === 1 ? <img src={tich} alt="" /> : ""}
+                                  </div>
+                                </li>
+                              )
+                            }
+                          })
+                        }
+                      </ul>
+                    </>
+                    :
+                    <div></div>
+                }
               </div>
-              <div className="header__name">
-                <span> Fusionist - Bi·Mech</span>
-              </div>
-              <img src={tich} alt="" />
-            </li>
-            <li>
-              <div className="header__avatar">
-                <img src={avata3} alt="" />
-              </div>
-              <div className="header__name">
-                <span>Alpha Prestige - Fusionist</span>
-              </div>
-              <img src={tich} alt="" />
-            </li>
-            <li>
-              <div className="header__avatar">
-                <img src={avata1} alt="" />
-              </div>
-              <div className="header__name">
-                <span>Dream Girls NFT</span>
-              </div>
-            </li>
-            <li>
-              <div className="header__avatar">
-                <img src={avata4} alt="" />
-              </div>
-              <div className="header__name">
-                <span>The CR7 NFT Collection</span>
-              </div>
-            </li>
-            <li>
-              <div className="header__avatar">
-                <img src={avata5} alt="" />
-              </div>
-              <div className="header__name">
-                <span>ALPACADABRAZ</span>
-              </div>
-            </li>
-            <li>
-              <div className="header__avatar">
-                <img src={avata6} alt="" />
-              </div>
-              <div className="header__name">
-                <span>WonderfulDay Tiger NFT</span>
-              </div>
-            </li>
-            <li>
-              <div className="header__avatar">
-                <img src={avata7} alt="" />
-              </div>
-              <div className="header__name"><span>TUD NFT</span></div>
-            </li>
-          </ul>
+          }
         </div>
       </form>
     </div>

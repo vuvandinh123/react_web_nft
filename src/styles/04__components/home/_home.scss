@@ -1,0 +1,142 @@
+.main__home {
+    color: var(--text-color);
+    position: relative;
+    max-width: 100%;
+    .main__title {
+        font-size:$f-heading ;
+        font-weight: bold;
+        position: relative;
+        div {
+            display: flex;
+            margin: 20px 0;
+            img {
+                width: 15rem;
+            }
+        }
+    
+        p>img {
+            width: 50px;
+        }
+    
+        &::after {
+            content: "";
+            position: absolute;
+            background-image: url(src/assets/images/Banner/title3.png);
+            height: 10rem;
+            left: 100px;
+            background-repeat: no-repeat;
+            width: 15rem;
+            transform: rotate(-5deg);
+        }
+    }
+    @include tablet {
+        .main__title {
+            font-size: 7.5rem;
+            text-align: center;
+        }
+        
+    }
+    @include media(558px){
+        .main__title {
+            font-size: 6rem;
+        }
+        .main__image::before{
+            top: -150 !important;
+        }
+    }
+    @include mobile{
+        .main__title {
+            font-size: 4.8rem;
+            text-align: start;
+
+        }
+        .main__text{
+            text-align: center;
+
+        }
+        .main__image::before{
+            // content: unset;
+            top: -150px !important;
+        }
+    }
+    @include media(400px){
+        .main__title {
+            font-size: 4.5rem;
+            text-align: start;
+        }
+        
+        .title-image{
+            width: 100px !important;
+        }
+        .main__text {
+            font-size: $xs-size;
+        }
+    }
+    @include media("360px"){
+        .main__title {
+            font-size: 3.5rem;
+            text-align: start;
+        }
+    }
+    
+}
+   
+.main__text {
+    line-height: 2;
+    color: $gray;
+}
+.main__star{
+    position: absolute;
+    top: 0;
+    z-index: -999;
+    left: 20%;
+}
+
+.main__image {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+    .image__item {
+        // height: 420px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &::before {
+        content: "";
+        width: 108%;
+        left: -25px;
+        left: -4%;
+        height: 300px;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-top: 1px solid transparent;
+        border-bottom: 2px solid #fff;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 9;
+    }
+    .main__image{
+        overflow: hidden;
+    }
+    &::after {
+        content: "";
+        width: 100%;
+        top: 10%;
+        right: 0;
+        height: 300px;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-top: 2px solid #fff;
+        border-bottom: 2px solid transparent;
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+    }
+}

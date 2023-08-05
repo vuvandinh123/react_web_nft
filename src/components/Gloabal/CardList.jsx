@@ -6,11 +6,14 @@ import { useEffect, useState } from "react"
 import Placehoder from "./Placehoder"
 const StyledCardList = styled.div`
     overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(${(props) => props.qtyColumns || 3},1fr);
-    grid-column-gap: 40px;
-    grid-row-gap: 20px;
-    margin-top: 50px;
+    /* display: grid;
+    grid-template-columns: repeat(${(props) => props.qtyColumns || 3},auto); */
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content:space-between; */
+    /* grid-column-gap: 40px; */
+    /* grid-row-gap: 20px; */
+    /* margin-top: 50px; */
     @media only screen and (max-width: 987px) {
         grid-template-columns: 1fr 1fr;
     }
@@ -35,8 +38,7 @@ const CardList = (props) => {
          card = placehoder.map((item,index)=>(<Placehoder key={index}/>))
     }
     else{
-
-         card  = product.map((item)=>(<Card key={item.id} name={item.name} price={item.price} image={item.image} author={item.author} description={item.description}/>))
+         card  = product.map((item)=>(<Card col={qtyColumns} key={item.id} id={item.id} name={item.name} price={item.price} image={item.image} author={item.author} description={item.description}/>))
     }
     return (
         <div>

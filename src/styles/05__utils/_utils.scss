@@ -1,0 +1,303 @@
+// -----------
+.container {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 $m-size;
+    position: relative;
+}
+.background{
+    position: relative;
+    // overflow: hidden;
+    width: 100%;
+    max-height: max-content;
+}
+// color
+.text-white{
+    color: $white;
+}
+.text-acc{
+    color: #707a8a
+}
+.text-gray{
+    color: gray;
+}
+.text{
+    color: var(--text-color) !important;
+}
+.text-yellow{
+    color: $yellow;
+}
+// test
+.text-center{
+    text-align: center;
+}
+// margin
+.m-auto{
+    margin: auto !important;
+}
+.mx-auto{
+    margin: 0 auto !important;
+}
+.mx-0{
+    margin: auto 0 auto 0 auto;
+}
+.m-0{
+    margin: 0;
+}
+.ms-0{
+    margin-left: 0;
+}
+.me-0{
+    margin-right: 0;
+}
+.me-1{
+    margin-right: $xs-size;
+}
+.me-2{
+    margin-right: $s-size;
+}
+.me-3{
+    margin-right: $m-size;
+}
+.me-4{
+    margin-right: $xl-size;
+}
+.me-5{
+    margin-right: $xxl-size;
+}
+.ms-1{
+    margin-left: $xs-size;
+}
+.ms-2{
+    margin-left: $s-size;
+}
+.ms-3{
+    margin-left: $m-size;
+}
+.ms-4{
+    margin-left: $xl-size;
+}
+.ms-5{
+    margin-left: $xxl-size;
+}
+.m-1{
+    margin:$xs-size;
+}
+.m-2{
+    margin: $s-size;
+}
+.m-3{
+    margin: $m-size;
+}
+.m-4{
+    margin: $l-size;
+}
+.m-5{
+    margin: $xl-size;
+}
+
+.mt-0{
+    margin-top: 0;
+}
+.mt-1{
+    margin-top: $xs-size;
+}
+.mt-2{
+    margin-top: $s-size;
+}
+.mt-3{
+    margin-top: $m-size;
+}
+.mt-4{
+    margin-top: $xl-size
+}
+.mt-5{
+    margin-top: $xxl-size
+}
+.mb-1{
+    margin-bottom: $xs-size;
+}
+.mb-2{
+    margin-bottom: $s-size;
+}
+.mb-3{
+    margin-bottom: $m-size;
+}
+.mb-4{
+    margin-bottom: $xl-size;
+}
+.mb-5{
+    margin-bottom: $xxl-size;
+}
+// padding
+.p-auto{
+    padding: auto !important;
+}
+.px-0{
+    padding: auto 0 auto 0 auto;
+}
+.px-auto{
+    padding: 0 auto !important;
+}
+.p-0{
+    padding: 0 !important;
+}
+.ps-0{
+    padding-left: 0;
+}
+.pe-0{
+    padding-right: 0;
+}
+.p-1{
+    padding:$xs-size;
+}
+.p-2{
+    padding: $s-size;
+}
+.p-3{
+    padding: $m-size;
+}
+.p-4{
+    padding: $l-size;
+}
+.p-5{
+    padding: $xl-size;
+}
+.py-1{
+    padding:$xs-size 0;
+}
+.py-2{
+    padding: $s-size 0;
+}
+.py-3{
+    padding: $m-size 0;
+}
+.py-4{
+    padding: $l-size 0;
+}
+.py-5{
+    padding: $xl-size 0;
+}
+
+// flexbox
+.d-flex{
+    display: flex !important;
+
+} 
+.d-inline{
+    display: inline;
+}
+.d-center{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+.d-none{
+    display: none;
+}
+.d-block{
+    display: block;
+}
+.d-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shirk{
+    flex-shrink: 0;
+}
+.gap-y-1{
+    column-gap: $m-size;
+}
+.gap-y-2{
+    column-gap: $l-size;
+}
+.gap-y-3{
+    column-gap:$xl-size;
+}
+.gap-y-4{
+    column-gap:$xxl-size;
+}
+
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+
+.col-5{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.col-4{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.col-3{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.col-2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.col-1{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+@include media("1024px"){
+    .col-md-1{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .col-md-2{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .col-md-3{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .col-md-4{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@include media("768px"){
+    .col-sm-1{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .col-sm-2{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .col-sm-3{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .col-sm-4{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@include media("500px"){
+    .col-xs-1{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .col-xs-2{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .col-xs-3{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .col-xs-4{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

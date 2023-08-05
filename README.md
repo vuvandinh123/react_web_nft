@@ -7,7 +7,7 @@ Simple NFT react js app with vite.
 
 ## Run Locally
 ### 1. Install Dependencies
-```
+```sh
 $ npm install
 ```
 ### 2. Run development server

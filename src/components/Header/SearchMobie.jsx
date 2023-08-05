@@ -10,9 +10,12 @@ import avata7 from '../../assets/images/user/avata7.png';
 import tich from '../../../public/tich.png';
 import fire from '../../../public/lua.png';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 
 const SearchMobie = (props) => {
+    const {t} =  useTranslation()
+
     const { search, handleClickCloseSearch } = props;
     return (
         <form action='aaa' id="input-search" className={`bars__search 
@@ -21,11 +24,11 @@ const SearchMobie = (props) => {
             <div className="input-search-mb">
                 <i onClick={()=>handleClickCloseSearch()} className="fa-solid fa-chevron-left close-search-mb" />
                 <input type="text" required />
-                <label htmlFor="s" className="place">Search collection, item or user</label>
+                <label htmlFor="s" className="place">{t('search_placeholder')}</label>
                 <button><i className="fa-solid fa-magnifying-glass" /></button>
             </div>
             <div className="header__search--collections">
-                <p>Recommended Collections <img src={fire} alt="" /></p>
+                <p>Recommended Collections <img className='d-inline' src={fire} alt="" /></p>
                 <ul>
                     <li>
                         <div className="header__avatar">

@@ -5,10 +5,11 @@ import { styled } from "styled-components";
 
 const StyledCollection = styled.div`
     margin: 100px 0;
+    position: relative;
     .collecttion__title {
       h3 {
         font-size: 3.5rem;
-        color: var(--color-text);
+        color: var(--text-color);
         font-weight: bold;
         text-align: center;
       }
@@ -28,19 +29,20 @@ const StyledCollection = styled.div`
 const Collections = () => {
   return (
     <>
+
       <StyledCollection>
-        <div className="collecttion__title">
+        <div className="collecttion__title m-5">
           <h3>
-            Featured Collections <img src={fire} alt />
+            Featured Collections <img src={fire} className="d-inline" alt="" />
           </h3>
           <p>
             Discover, collect, and sell extraordinary NFTs through our awesome
             platform.
           </p>
         </div>
-        <CardList/>
+        <CardList qtyColumns={4} />
         <div className="card__more">
-          <Button height="50px">Views More</Button>
+          <Button tag="a" to={`/NFTs`} height="50px">Views More</Button>
         </div>
       </StyledCollection>
 

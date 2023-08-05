@@ -2,19 +2,11 @@
 import { PropTypes } from "prop-types";
 import styled from "styled-components"
 
-const StyledBlur = styled.div`
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-`
 const StyledBlurItem = styled.div`
-    width: ${(props) => props.width || "200px"};
-    height: ${(props) => props.height || "200px"};
+    width: ${(props) => props.width || "20%"};
+    height: ${(props) => props.height || "5%"};
     position: absolute;
+    z-index:-99;
     filter: blur(165px);
     border-radius: 50%;
     background: ${(props) => props.background || "#aa00ff"};
@@ -22,12 +14,9 @@ const StyledBlurItem = styled.div`
     top: ${(props) => props.top || "100px"};
 `
 const Blur = (props) => {
-    const { top,left, background,width,height } = props;
-
+    const { top, left, background, width, height } = props;
     return (
-        <StyledBlur>
-                <StyledBlurItem top={top} width={width} height={height} left={left} background={background}  ></StyledBlurItem>
-        </StyledBlur>
+        <StyledBlurItem top={top} width={width} height={height} left={left} background={background}  ></StyledBlurItem>
     )
 }
 Blur.propTypes = {

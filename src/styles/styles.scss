@@ -1,0 +1,36 @@
+// 01__SETTING
+@import './01__setting/breakpoints';
+@import './01__setting/colors';
+@import './01__setting/sizes';
+@import './01__setting/typography';
+
+// 02__TOOLS
+@import './02__tools/functions';
+@import './02__tools/mixins';
+
+// 03__ELEMENTS
+@import './03__elements/base';
+@import './03__elements/card';
+@import './03__elements/header';
+@import './03__elements/footer';
+@import './03__elements/loading';
+@import './03__elements/productDetail';
+@import './03__elements/accordion';
+
+// 04__COMPONENTS
+@import './04__components/home/home';
+@import './04__components/home/category';
+@import './04__components/home/brand';
+@import './04__components/home/trending';
+@import './04__components/home/topCollections';
+@import './04__components/home/artist';
+@import './04__components/home/works';
+@import './04__components/home/Community';
+@import './04__components/collections/collections';
+
+// 05_UTILS
+@import './05__utils/animation';
+@import './05__utils/state';
+@import './05__utils/utils';
+
+

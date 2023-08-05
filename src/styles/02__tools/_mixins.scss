@@ -1,0 +1,18 @@
+// mixin styles
+
+  
+  @mixin tablet {
+    @media (max-width: 1023px) {
+      @content;
+    }
+  }
+  @mixin mobile {
+    @media (max-width: 479px) {
+      @content;
+    }
+  }
+  @mixin media($maxWith) {
+    @media screen and (max-width: $maxWith) {
+        @content;
+    }
+}

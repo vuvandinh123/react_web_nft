@@ -1,32 +1,30 @@
-import './App.scss'
-import { Route, Routes } from 'react-router-dom';
-import Layout from './layout/layout'
-import HomePage from './pages/HomePage/HomePage';
-// import {  ref, get, child } from "firebase/database";
-// import { database } from './firebase';
+import './styles/styles.scss'
+import { useRoutes } from 'react-router-dom';
+import Layout from './layout'
+import { CollectionsPage, HomePage, ProductDetailPage, SearchPage } from './pages';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './language/LanguageSetting';
+
 function App() {
 
-  // const dbRef = ref(database);
-  // get(child(dbRef, `product`)).then((snapshot) => {
-  //   if (snapshot.exists()) {
-  //     console.log(snapshot.val());
-  //   } else {
-  //     console.log("No data available");
-  //   }
-  // }).catch((error) => {
-  //   console.error(error);
-  // });
- 
-return (
-  <>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-      </Route>
-
-    </Routes>
-  </>
-)
+  const routes = [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: '/item/:id', element: <ProductDetailPage /> },
+        { path: '/NFTs', element: <CollectionsPage /> },
+        { path: '/search', element: <SearchPage /> },
+      ],
+    },
+  ];
+  return (
+    <I18nextProvider i18n={i18n}>
+      {useRoutes(routes)}
+    </I18nextProvider>
+    
+  )
 }
 
 export default App

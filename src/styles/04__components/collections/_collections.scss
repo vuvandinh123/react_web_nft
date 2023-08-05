@@ -1,0 +1,94 @@
+.collections {
+    // position: relative;
+    &__header {
+        margin-bottom: 50px;
+        button {
+            background-color: var(--bg-hover);
+            padding: 10px;
+            color: var(--text-color);
+            border-radius: 5px;
+        }
+
+        select {
+            color: var(--text-color);
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            padding: 10px 5px;
+        }
+    }
+
+
+}
+
+.collections__body{
+    position: relative;
+}
+.collections__content {
+    display: flex;
+    .collections__sidebar {
+        overflow: hidden;
+        background-color: transparent;
+        height: 1000px;
+        width: 0;
+        padding: 0;
+        visibility: hidden;
+        transition: .3s;
+        flex-shrink: 0;
+        h3{
+            font-size: $l-size;
+            font-weight: bold;
+        }
+    }
+    &.collections__body {
+    }
+    & .collections__sidebar.active {
+        overflow: visible;
+        visibility: inherit;
+        padding: 10px;
+        width: 250px;
+        transition: .3s;
+    }
+    .nft__header{
+        margin: 10px 0;
+        h2{
+            font-size: 2rem;
+        }
+        span{
+
+        }
+    }
+    .sticky {
+        position: sticky;
+        top: 100px;
+    }
+    .filter__close{
+        display: none;
+    }
+}
+@include media(789px){
+    .collections__content{
+        display: block;
+    }
+    .collections__sidebar{
+        position: fixed;
+        z-index: 9999 !important;
+        top: 0;
+        left: 0;
+        right: 0 !important;
+    }
+    .filter__close{
+        display: block !important;
+    }
+    .collections__sidebar.active {
+        overflow: visible;
+        visibility: inherit;
+        z-index: 99;
+        padding: 10px;
+        width: 100% !important;
+        background-color: var(--bg-sticky-mb);
+        .sticky {
+            position: relative;
+            top: 50px;
+        }
+    }
+}

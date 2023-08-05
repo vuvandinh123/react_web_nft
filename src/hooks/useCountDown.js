@@ -1,24 +1,43 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
-export default function useCountDown({timeCountDown}){
-    const coundownRef = useRef(null)
+export default function useCountDown(type,timeCountDown){
+    const [time, setTime] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    })
     useEffect(() => {
-        const dom = coundownRef.current;
         const countdown = setInterval(() => {
+            let days = 0;let hours = 0;let minutes = 0;let seconds = 0;
             let now = new Date().getTime();
             let distance = timeCountDown - now;
-            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            dom.querySelector(".days").innerHTML = days;
-            dom.querySelector(".hours").innerHTML = hours;
-            dom.querySelector(".minutes").innerHTML = minutes;
-            dom.querySelector(".seconds").innerHTML = seconds;
+            if(distance>0){
+                if(type === "hours"){
+                    hours = Math.floor(distance / (1000 * 60 * 60));
+                    minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    seconds = Math.floor((distance % (1000 * 60)) / 1000);
+               }
+               else if(type === "days"){
+                    days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    seconds = Math.floor((distance % (1000 * 60)) / 1000);
+               }
+               setTime({
+                   days,
+                   hours,
+                   minutes,
+                   seconds
+               })
+            }
+            
+            
+            
         }, 1000)
         return () => clearInterval(countdown)
     }, [timeCountDown])
     return {
-        coundownRef,
+        time
     }
 }
