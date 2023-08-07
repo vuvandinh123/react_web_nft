@@ -85,9 +85,9 @@ body.darkmode {
     background-color: var(--body-bg-dark);
 }
 ::-webkit-scrollbar {
-    width: 1px;
+    width: 3px;
     background-color: #131528;
 } 
 ::-webkit-scrollbar-thumb {
-    background-color: #131528;
+    background-color: hsl(53, 100%, 60%);
 }

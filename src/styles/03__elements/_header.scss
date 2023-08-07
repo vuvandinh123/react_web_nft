@@ -13,7 +13,7 @@ header {
         padding: 5px 10px;
         box-shadow: rgba(193, 88, 235, 0.25) 0px 25px 20px -20px;
     }
-
+    
     .header {
         position: fixed;
         top: 30px;
@@ -23,7 +23,7 @@ header {
         transition: 0.4s;
 
         &__navigation {
-            width: 1200px;
+            width: 1440px;
             margin: 0 auto;
             max-width: 100%;
             padding: 10px 20px;
@@ -181,7 +181,7 @@ header {
         }
 
         &__logo {
-            font-size: x-large;
+            font-size: 3.3rem;
             font-weight: bold;
             cursor: pointer;
         }
@@ -196,6 +196,18 @@ header {
             &::-webkit-scrollbar-thumb {
                 background-color: #c6c6c6;
             }
+        }
+        .header__right{
+            gap: 20px;
+
+        }
+        .header__right::before{
+            content: '';
+            width: 2px;
+            display: block;
+            height: 25px;
+            // margin-right: 15px;
+            background-color: #ccc;
         }
         &__collections {
             
@@ -568,7 +580,14 @@ header {
     background-color: var(--bg-model);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
+.lang{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.701);
+}
 .lang__header {
     border-bottom: 1px solid #ccc;
     padding: 5px;
@@ -620,7 +639,6 @@ header {
 .switch {
     font-size: 2rem;
     position: relative;
-    margin-top: 5px;
     width: 40px;
     height: 40px;
 

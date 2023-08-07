@@ -1,12 +1,14 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from 'react';
-import { ProductApi } from '../../api/ProductApi';
 import { useParams } from 'react-router';
-import { Accordion, Blur, Button, ImageLoader } from '../../components/Gloabal';
-import { useCountDown, useDocumentTitle, useScrollTop } from '../../hooks';
+import { Accordion, Button, ImageLoader } from '../../components/Gloabal';
+import { useCountDown, useDocumentTitle, useGetId, useScrollTop } from '../../hooks';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Detail, PriceHistory } from '../../components';
-const ProductDetailPage = () => {
+import warning from '../../../public/warning-svgrepo-com.svg'
+import { formatPrice, shortened } from '../../utils';
+const nftsPage = () => {
   const data = [
     {
       name: 'month 1',
@@ -39,15 +41,17 @@ const ProductDetailPage = () => {
   const { time } = useCountDown("days", timeCountDown);
   const [loading, setLoading] = useState(true);
   useScrollTop();
-  const { id } = useParams();
+  const { id, address } = useParams();
   useEffect(() => {
     const loader = setTimeout(() => {
       setLoading(false);
     }, 1000);
     return () => clearTimeout(loader);
   }, [])
-  const productDetail = ProductApi.find((item) => item.id == id);
-  useDocumentTitle("VVD | "+ productDetail.name);
+  const { nfts, price } = useGetId(address, id);
+  const adres = nfts?.contract_address;
+  const short = shortened(adres);
+  useDocumentTitle("VVD | " + nfts.name);
 
   return (
     <>
@@ -55,16 +59,16 @@ const ProductDetailPage = () => {
         <div className="spinner"></div>
       </div>
 
-      <Blur top="10%" left="30%" width="100px" height="100px" background="#ff20fb" />
+      {/* <Blur top="10%" left="30%" width="100px" height="100px" background="#ff20fb" />
       <Blur top="30%" left="20%" width="200px" height="200px" background="#ff0000" />
       <Blur top="50%" left="90%" width="300px" height="200px" background="#a805ff" />
-      <Blur top="10%" left="70%" width="200px" height="200px" background="#a805ff" />
+      <Blur top="10%" left="70%" width="200px" height="200px" background="#a805ff" /> */}
       <div style={{ overflow: "hidden", width: "100%" }} className='relative'>
         <div className="container">
           <div className="product__detail">
             <div className="detail__left">
-              <div style={{ borderRadius: "15px", overflow: "hidden",width: "100%" }} className="image d-center">
-                <ImageLoader src={productDetail.image} />
+              <div style={{ borderRadius: "15px", overflow: "hidden", width: "100%" }} className="image d-center">
+                <ImageLoader src={nfts?.image} />
               </div>
             </div>
             <div className="detail__right">
@@ -85,12 +89,12 @@ const ProductDetailPage = () => {
                   <div className="user__report"><i className="fa-solid fa-exclamation"></i></div>
                 </div>
               </div>
-              <div className="name__product">{productDetail.name || <Skeleton width="350px" height="28px" />}</div>
+              <div className="name__product">{nfts.name || <Skeleton width="350px" height="28px" />}</div>
               <div>
                 {loading ?
                   <Skeleton className='d-inline' width="150px" height="25px" />
                   :
-                  <><span className="top">6198</span><span className='type'>Listed From</span></>
+                  <><span className="top">{nfts?.rarity?.rank}</span><span className='type'>Listed From</span></>
                 }
               </div>
 
@@ -98,7 +102,17 @@ const ProductDetailPage = () => {
                 <div className="price__title"><span>Price</span><span>Ends in</span></div>
                 <div className="price__eth">
                   <div className='py-1'>
-                    {productDetail.price ? <span className='d-flex'>{productDetail.price} ETH </span> : <Skeleton width="300px" height="25px" />}
+                    {price?.last_price?.price?.value ?
+                      <div className='d-flex' style={{ alignItems: "center" }}>
+
+                        <span className='d-flex' style={{ marginRight: "10px" }}>
+                          <i style={{ marginRight: "10px" }} className="fa-brands fa-ethereum text-yellow"></i>
+                          {price?.last_price?.price?.value} ETH </span>
+                        <span className='' style={{ fontSize:"1.4rem",color:"#808080",fontWeight:"400" }}> ≈ {formatPrice(price?.last_price?.price?.usd)} USD</span>
+                      </div>
+
+
+                      : <Skeleton width="300px" height="25px" />}
                   </div>
 
                   {
@@ -132,12 +146,17 @@ const ProductDetailPage = () => {
               <div className="dec">
                 {
                   loading ? <Skeleton width="500px" count={3} borderRadius={"10px"} height="10px" /> :
-                    <div>
-                      <p>This NFT is a third-party listing:</p>
-                      <ul style={{ lineHeight: 2, }}>
-                        <li> To complete the transaction, you will need to pay a gas fee and wait for the blockchain confirmation which normally takes around 10 minutes; and</li>
-                        <li>You are responsible for verifying the identity, legitimacy, and authenticity of this NFT.</li>
-                      </ul>
+                    <div className='d-flex' style={{ alignItems: "flex-start", gap: "10px" }}>
+                      <img width={"20px"} className='d-inline ' src={warning} alt="" />
+                      <div>
+                        <p>
+                          This NFT is a third-party listing:</p>
+                        <ul style={{ lineHeight: 2, }}>
+                          <li> To complete the transaction, you will need to pay a gas fee and wait for the blockchain confirmation which normally takes around 10 minutes; and</li>
+                          <li>You are responsible for verifying the identity, legitimacy, and authenticity of this NFT.</li>
+                        </ul>
+                      </div>
+
                     </div>
 
                 }
@@ -146,7 +165,7 @@ const ProductDetailPage = () => {
             <div className="detail__left">
               <div className="">
                 <Accordion show={true} title="Detail">
-                  <Detail/>
+                  <Detail address={short} token={id} />
                 </Accordion>
                 <Accordion show={true} title="Description">
                   <p className='text-acc' style={{ lineHeight: "2" }}>
@@ -171,4 +190,4 @@ const ProductDetailPage = () => {
   )
 }
 
-export default ProductDetailPage
+export default nftsPage

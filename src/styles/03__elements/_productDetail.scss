@@ -1,6 +1,6 @@
 .product__detail {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 35% auto;
     grid-column-gap: 60px;
     color: var(--text-color);
     .detail__left {

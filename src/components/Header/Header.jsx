@@ -87,43 +87,48 @@ const Header = () => {
                             <div className="header__btn d-center">
                                 <a className='d-center' href="#">Connect Wallet</a>
                             </div>
-                            <div >
-                                <i onClick={handleChangleModel} className="fa-solid fa-earth-americas" style={{ cursor: 'pointer' }}></i>
-                                {
-                                    model && (
-                                        <div className='header__language'>
-                                            <div className="lang__header d-between p-3">
-                                                <h6><i className="fa-solid fa-earth-americas me-2"></i> Language</h6>
-                                                <span style={{ cursor: 'pointer', fontSize: '1.8rem' }} onClick={() => setModel(false)} className="text-yellow p-1"><i className="fa-solid fa-xmark"></i></span>
-                                            </div>
-                                            <div className="lang__body">
-                                                <p className='py-2 text-acc'>
-
-                                                    Choose a language and region</p>
-                                                <div className="d-flex" style={{ flexWrap: "wrap" }}>
-                                                    <div className='lang__item'>
-                                                        <input
-                                                            checked={lang === 'en'}
-                                                            onChange={handleChangleLang} type="radio" value="en" id='en' name='lang' />
-                                                        <label htmlFor="en">English</label>
+                            <div className='d-flex header__right' style={{ alignItems: 'center' }}>
+                                <div className='mx-2'>
+                                    <i onClick={handleChangleModel} className="fa-solid fa-earth-americas" style={{ cursor: 'pointer' }}></i>
+                                    {
+                                        model && (
+                                            <div className="lang">
+                                                <div className='header__language'>
+                                                    <div className="lang__header d-between p-3">
+                                                        <h6><i className="fa-solid fa-earth-americas me-2"></i> Language</h6>
+                                                        <span style={{ cursor: 'pointer', fontSize: '1.8rem' }} onClick={() => setModel(false)} className="text-yellow p-1"><i className="fa-solid fa-xmark"></i></span>
                                                     </div>
-                                                    <div className='lang__item'>
-                                                        <input onChange={handleChangleLang}
-                                                            checked={lang === 'vi'}
-                                                            type="radio" value="vi" id='vi' name='lang' />
-                                                        <label htmlFor="vi">Việt Nam</label>
+                                                    <div className="lang__body">
+                                                        <p className='py-2 text-acc'>
+
+                                                            Choose a language and region</p>
+                                                        <div className="d-flex" style={{ flexWrap: "wrap" }}>
+                                                            <div className='lang__item'>
+                                                                <input
+                                                                    checked={lang === 'en'}
+                                                                    onChange={handleChangleLang} type="radio" value="en" id='en' name='lang' />
+                                                                <label htmlFor="en">English</label>
+                                                            </div>
+                                                            <div className='lang__item'>
+                                                                <input onChange={handleChangleLang}
+                                                                    checked={lang === 'vi'}
+                                                                    type="radio" value="vi" id='vi' name='lang' />
+                                                                <label htmlFor="vi">Việt Nam</label>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
-
                                             </div>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                            <div className="switch d-center">
-                                {darkmod ? <i onClick={handleChangleDarkmode} className="fa-solid fa-sun" />
-                                    : <i onClick={handleChangleDarkmode} className="fa-solid fa-moon" />
-                                }
+
+                                        )
+                                    }
+                                </div>
+                                <div className="switch d-center">
+                                    {darkmod ? <i onClick={handleChangleDarkmode} className="fa-solid fa-sun" />
+                                        : <i onClick={handleChangleDarkmode} className="fa-solid fa-moon" />
+                                    }
+                                </div>
                             </div>
                         </div>
                         <div className="header__bars--mb ">

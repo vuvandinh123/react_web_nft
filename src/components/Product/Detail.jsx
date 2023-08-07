@@ -1,5 +1,6 @@
+import { checkPropTypes } from "prop-types"
 
-const Detail = () => {
+const Detail = ({address,token}) => {
     return (
         <>
             <div className="d-between mb-2">
@@ -26,12 +27,12 @@ const Detail = () => {
             </div>
             <div className="d-between mb-2">
                 <span className='text-acc'>Contract Address</span>
-                <span>0x102a...33a7</span>
+                <span>{address}</span>
             </div>
             <div className="d-between mb-2">
                 <span className='text-acc'>Token ID</span>
                 <div className='d-flex'>
-                    1019300827352
+                    {token}
                 </div>
             </div>
             <div className="d-between mb-2">
@@ -45,5 +46,8 @@ const Detail = () => {
         </>
     )
 }
-
+Detail.propTypes = {
+    address: checkPropTypes.string,
+    token: checkPropTypes.string,
+}
 export default Detail

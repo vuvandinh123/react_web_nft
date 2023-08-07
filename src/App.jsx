@@ -4,6 +4,7 @@ import Layout from './layout'
 import { CollectionsPage, HomePage, ProductDetailPage, SearchPage } from './pages';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './language/LanguageSetting';
+import TestAPI from './components/TestAPI';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
       element: <Layout />,
       children: [
         { index: true, element: <HomePage /> },
-        { path: '/item/:id', element: <ProductDetailPage /> },
+        { path: '/item/:address/:id', element: <ProductDetailPage /> },
         { path: '/NFTs', element: <CollectionsPage /> },
         { path: '/search', element: <SearchPage /> },
       ],

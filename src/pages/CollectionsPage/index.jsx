@@ -1,46 +1,14 @@
 import { useState } from "react"
-import { Accordion, ArrowsSlick, CardList } from "../../components/Gloabal"
-import { useDocumentTitle, useScrollTop } from "../../hooks"
+import { Accordion, ArrowsSlick, Card, CardList } from "../../components/Gloabal"
+import { useDocumentTitle, useGetNFT, useScrollTop } from "../../hooks"
+import useNftsApi from "../../hooks/useNftsApi"
 
 const CollectionsPage = () => {
     const [sidebar, setSidebar] = useState(false)
-    const [close, setClose] = useState(false);
     useScrollTop()
+    const {nfts} = useNftsApi(0,20);
+    console.log(nfts);
     useDocumentTitle("VVD | NFTs");
-    const settings = {
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: false,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-    const handleClickFilter = () => {
-        setClose(true)
-    }
     return (
         <div className="container">
             <div className="collections">
@@ -99,20 +67,14 @@ const CollectionsPage = () => {
                     </div>
 
                     <div className="collections__body">
-                        {/* <ArrowsSlick settings={settings} title="Collections">
-                            <div >1</div>
-                            <div>2</div>
-                            <div>3</div>
-                            <div>4</div>
-                            <div>5</div>
-                            
-                        </ArrowsSlick> */}
                         <div className="nft__header d-between text">
                             <h2>All NFTs</h2>
                             <span>123,231 item</span>
                         </div>
-
-                        <CardList qtyColumns={sidebar ? 3 : 4} />
+                        {/* <Card col={qtyColumns} key={item.id} id={item.id} name={item.name} price={item.last_price.value} image={item.image} last_deal_time={item.last_deal_time} author={item.owner.address} description={item.description}/> */}
+                        <div className="card__list">
+                            <CardList qtyColumns={sidebar ? 3 : 4} products={nfts}/>
+                        </div>
                     </div>
                 </div>
 

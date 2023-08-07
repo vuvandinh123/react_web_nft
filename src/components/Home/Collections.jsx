@@ -2,6 +2,7 @@ import fire from "../../assets/images/user/lua.png"
 import CardList from "../Gloabal/CardList";
 import Button from "../Gloabal/Button";
 import { styled } from "styled-components";
+import useNftsApi from "../../hooks/useNftsApi";
 
 const StyledCollection = styled.div`
     margin: 100px 0;
@@ -27,6 +28,9 @@ const StyledCollection = styled.div`
     }
 `
 const Collections = () => {
+  const {nfts} = useNftsApi();
+  const products = {name:nfts.name, price:nfts.price,image:nfts.image}
+  console.log(nfts);
   return (
     <>
 
@@ -40,7 +44,7 @@ const Collections = () => {
             platform.
           </p>
         </div>
-        <CardList qtyColumns={4} />
+        <CardList qtyColumns={4} products={nfts} />
         <div className="card__more">
           <Button tag="a" to={`/NFTs`} height="50px">Views More</Button>
         </div>

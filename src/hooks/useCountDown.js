@@ -36,7 +36,7 @@ export default function useCountDown(type,timeCountDown){
             
         }, 1000)
         return () => clearInterval(countdown)
-    }, [timeCountDown])
+    }, [timeCountDown,type])
     return {
         time
     }
