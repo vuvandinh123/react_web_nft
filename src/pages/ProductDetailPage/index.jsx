@@ -7,6 +7,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Detail, PriceHistory } from '../../components';
 import warning from '../../../public/warning-svgrepo-com.svg'
+import tich from '../../../public/tich.png'
 import { formatPrice, shortened } from '../../utils';
 const nftsPage = () => {
   const data = [
@@ -58,11 +59,6 @@ const nftsPage = () => {
       <div id="loading" className={`loaders ${loading == true ? 'active' : ''}`}>
         <div className="spinner"></div>
       </div>
-
-      {/* <Blur top="10%" left="30%" width="100px" height="100px" background="#ff20fb" />
-      <Blur top="30%" left="20%" width="200px" height="200px" background="#ff0000" />
-      <Blur top="50%" left="90%" width="300px" height="200px" background="#a805ff" />
-      <Blur top="10%" left="70%" width="200px" height="200px" background="#a805ff" /> */}
       <div style={{ overflow: "hidden", width: "100%" }} className='relative'>
         <div className="container">
           <div className="product__detail">
@@ -79,7 +75,7 @@ const nftsPage = () => {
                       <Skeleton baseColor='#cfcfcfdc' className='d-inline' width="180px" height="20px" />
                       : <>
                         <span className='me-1'>vu van dinh</span>
-                        <img className='d-inline' src="/public/tich.png" alt="" />
+                        <img className='d-inline' src={tich} alt="" />
                       </>
                     }
                   </p></div>

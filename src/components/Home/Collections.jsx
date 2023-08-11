@@ -29,11 +29,8 @@ const StyledCollection = styled.div`
 `
 const Collections = () => {
   const {nfts} = useNftsApi();
-  const products = {name:nfts.name, price:nfts.price,image:nfts.image}
-  console.log(nfts);
   return (
     <>
-
       <StyledCollection>
         <div className="collecttion__title m-5">
           <h3>
@@ -46,7 +43,7 @@ const Collections = () => {
         </div>
         <CardList qtyColumns={4} products={nfts} />
         <div className="card__more">
-          <Button tag="a" to={`/NFTs`} height="50px">Views More</Button>
+          <Button tag="a" to={`/trending`} height="50px">Views More</Button>
         </div>
       </StyledCollection>
 

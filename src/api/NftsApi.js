@@ -1,8 +1,8 @@
 import { axiosInstance } from "./axiosInstanceConfig";
 
 export const nftsAPI = {
-    getAll(params) {
-        var url = '/eth/v1/market/rank/nft/24h';
+    getAll(time,params) {
+        var url = `/eth/v1/market/rank/nft/${time}`;
         return axiosInstance.get(url, { params })
     },
     getNFTs(params) {

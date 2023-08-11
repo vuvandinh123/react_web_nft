@@ -1,38 +1,35 @@
 import { useEffect, useState } from "react";
 import { nftsAPI } from "../api/NftsApi";
 
-export default function useNftsApi(offset=0,limit=8) {
+export default function useNftsApi(time="24h",params={}) {
 
+    const [loading,setLoaing] = useState(true);
     const [nfts, setNfts] = useState([]);
-    // const clearLocalStorage = () => {
-    //     localStorage.removeItem('nfts');
-    //   };
+
     useEffect(() => {
-        const params = {
+        const param = {
             by: 'price',
-            category: 'ALL',
-            offset: offset,
-            limit: limit,
+            category: params.category || 'ALL',
+            offset: params.offset || 0,
+            limit: params.limit || 8,
         }
-        // if (localStorage.getItem("nfts")) {
-        //     setNfts(JSON.parse(localStorage.getItem("nfts")));
-        // }
-        // else{
+
             const fetchNfts = async () => {
-                const res = await nftsAPI.getAll(params);
+                const res = await nftsAPI.getAll(time,param);
                 setNfts(res.data.nfts);
-                localStorage.setItem("nfts", JSON.stringify(res.data.nfts));
+                setLoaing(false);
+                console.log("time out");
             };
             fetchNfts();
-        // }
-        // const timeout = setTimeout(clearLocalStorage, 600000);
         return () => {
-            // clearTimeout(timeout);
+            // return setLoaing(false);
         }
         
-    }, [offset,limit]);
+    }, [params.offset,params.limit,params.category,time]);
 
     return {
-        nfts
+        nfts,
+        setLoaing,
+        loading,
     }
 }

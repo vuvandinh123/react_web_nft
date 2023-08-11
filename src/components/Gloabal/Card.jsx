@@ -19,7 +19,7 @@ const Card = (props) => {
         <img className="" src={heart ? heart1 : heart2} alt="" />
       </div>
       <div className="card__image d-center relative">
-        <Link to={`/item/${address}/${id}`}><ImageLoader src={image} alt={name} /></Link>
+        <Link style={{ display:"block" }} to={`/item/${address}/${id}`}><ImageLoader src={image} alt={name} /></Link>
       </div>
       <div className="card__content">
         <div className="card__title"><h3>{name}</h3></div>

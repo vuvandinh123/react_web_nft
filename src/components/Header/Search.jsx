@@ -26,9 +26,9 @@ const Search = () => {
                             products.map((item, index) => {
                               if (index < 8) {
                                 return (
-                                  <li key={item.id}>
+                                  <li key={item.token_id}>
                                     <div className="header__avatar">
-                                      <img src={item.image} alt="" />
+                                      <img src={item?.logo} alt="" />
                                     </div>
                                     <div className="header__name">
                                       <span>{item.name}</span>
@@ -94,7 +94,7 @@ const Search = () => {
                                 <li key={item.id} className='d-between'>
                                   <div className='d-flex' style={{ gap: "10px", alignItems: "center" }}>
                                     <div className="header__avatar">
-                                      <img src={item.image} alt="" />
+                                      <img src={item.logo} alt="" />
                                     </div>
                                     <div className="header__name">
                                       <span>{item.name}</span>

@@ -19,7 +19,34 @@
 
 
 }
-
+.category__filter{
+    li{
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        transition: .2s;
+    }
+    li.active{
+        // background-color: var(--bg-hover);
+        color: #ffb805;
+    }
+    li:hover{
+        background-color: var(--bg-hover);
+        color: #ffb805;
+        
+    }
+}
+.scroll{
+    height: 100vh;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+        width: 0px;
+        background-color: #131528;
+    } 
+    &::-webkit-scrollbar-thumb {
+        background-color: hsl(53, 100%, 60%);
+    }
+}
 .collections__body{
     position: relative;
 }

@@ -9,7 +9,15 @@
     //     grid-template-columns: 1fr;
     // }
 }
+.card.placehoder{
+    &__btn {
+        display: none;
+    }
 
+    &:hover .card__image {
+        height: 65%;
+    }
+}
 .card {
     --col: 3;
     width: calc(100% / var(--col) - 20px);

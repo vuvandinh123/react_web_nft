@@ -1,6 +1,6 @@
 import { styled } from "styled-components"
 import Card from "./Card"
-import {PropTypes} from "prop-types"
+import { PropTypes } from "prop-types"
 import Placehoder from "./Placehoder"
 const StyledCardList = styled.div`
     overflow: hidden;
@@ -14,27 +14,26 @@ const StyledCardList = styled.div`
     }
 `
 const CardList = (props) => {
-    const {qtyColumns,products} = props
-    const placehoder = Array(3).fill(null);
+    const { qtyColumns, products, loading } = props
+    const placehoder = Array(12).fill(null);
 
-    let card;
-    if(products.length === 0){
-         card = placehoder.map((item,index)=>(<Placehoder key={index}/>))
-    }
-    else{
-         card  = products.map((item)=>(<Card col={qtyColumns} address={item.contract_address} key={item.token_id} id={item.token_id} name={item.name} price={item.last_price.value} image={item.image} last_deal_time={item.last_deal_time} author={item.owner.address} description={item.description}/>))
-    }
     return (
         <div>
             <StyledCardList qtyColumns={qtyColumns}>
-                    {card}
+                {
+                    loading ? 
+                    placehoder.map((item, index) => (<Placehoder col={qtyColumns} key={index} />)) 
+                    :
+                    products.map((item) => (<Card col={qtyColumns} address={item.contract_address} key={item.token_id} id={item.token_id} name={item.name} price={item.last_price.value} image={item.image} last_deal_time={item.last_deal_time} author={item.owner?.address} description={item.description} />))
+                }
             </StyledCardList>
         </div>
     )
 }
 CardList.propTypes = {
     qtyColumns: PropTypes.number,
-    products: PropTypes.array
+    products: PropTypes.array,
+    loading: PropTypes.bool,
 }
 
 export default CardList
