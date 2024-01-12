@@ -3,7 +3,7 @@ Simple NFT react js app with vite.
 
 ### [Live demo](https://vuvandinh123.github.io/vvd-nft/)
 
-![Salinaka screenshot](https://github.com/vuvandinh123/react_web_nft/blob/master/vvd-nft.jpeg)
+![image](https://github.com/vuvandinh123/react_web_nft/blob/master/vvd-nft.jpeg)
 
 ## Run Locally
 ### 1. Install Dependencies
