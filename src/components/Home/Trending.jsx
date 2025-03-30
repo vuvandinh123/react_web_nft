@@ -4,7 +4,7 @@ import { useCountDown } from "../../hooks";
 
 const Trending = () => {
 
-  const timeCountDown = new Date("2023-10-28T12:00:00").getTime();
+  const timeCountDown = new Date("2025-10-28T12:00:00").getTime();
   const { time } = useCountDown("days", timeCountDown);
   return (
     <>

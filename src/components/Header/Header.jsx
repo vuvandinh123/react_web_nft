@@ -76,7 +76,7 @@ const Header = () => {
                             </div>
                             <div className="header__menu d-center">
                                 <ul className=''>
-                                    <li><a href="#">Explore</a></li>
+                                    <li><Link to="/trending">Trending</Link></li>
                                     <li><a href="#">Create</a></li>
                                     <li><a href="#">Page</a></li>
                                 </ul>
