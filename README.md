@@ -3,7 +3,7 @@
 ## Project Overview
 This project is an NFT marketplace that fetches data from a third-party API to display NFTs. The application consists of three main pages:
 
-- **Home Page**: Showcases featured NFTs and collections.
+- **Home Page**: Showcases featured NFTs and collections..
 - **Trending Page**: Displays the most popular NFTs based on market trends.
 - **NFT Detail Page**: Provides detailed information about a selected NFT, including pricing history and ownership details.
 
