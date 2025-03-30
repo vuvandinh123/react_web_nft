@@ -2,27 +2,29 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      run: npm ci
-    - name: Add environment variables to .env
-      run: |
-        echo "REACT_VITE_BASE_URL_API=${{ secrets.REACT_VITE_BASE_URL_API }}" >> .env
-        echo "REACT_VITE_API_KEY=${{ secrets.REACT_VITE_API_KEY }}" >> .env
-    - name: Build
-      run: npm run build
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+      - name: Add environment variables to .env
+        run: |
+          echo "REACT_VITE_BASE_URL_API=${{ secrets.REACT_VITE_BASE_URL_API }}" >> .env
+          echo "REACT_VITE_API_KEY=${{ secrets.REACT_VITE_API_KEY }}" >> .env
+      - name: Build
+        run: npm run build
